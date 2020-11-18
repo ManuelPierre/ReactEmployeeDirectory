@@ -35,10 +35,51 @@ class App extends React.Component {
 
     this.setState({
       filteredUsers: this.state.randomUsers.filter((user) => {
-        
         return user.name.first.includes(selectedUser);
       }),
     });
+  };
+
+  sortByAsc = (event) => {
+    console.log("clicked!");
+    let sortedAscUsers = this.state.filteredUsers;
+
+    sortedAscUsers.sort(function (a, b) {
+      var nameA = a.name.first.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.first.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    });
+
+    this.setState({ filteredUsers: sortedAscUsers });
+  };
+
+  sortByDesc = (event) => {
+    console.log("clicked!");
+    let sortedDescUsers = this.state.filteredUsers;
+
+    sortedDescUsers.sort(function (a, b) {
+      var nameA = a.name.first.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.first.toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    });
+
+    this.setState({ filteredUsers: sortedDescUsers });
   };
 
   render() {
@@ -57,10 +98,14 @@ class App extends React.Component {
             <Button variant="outline-secondary">Search</Button>
           </InputGroup.Append>
         </InputGroup>
-        <EmployeeTable
-          randomUsers={this.state.filteredUsers}
-        
-        />
+        Sort:
+        <Button variant="outline-secondary" onClick={(e) => this.sortByAsc(e)}>
+          asc
+        </Button>
+        <Button variant="outline-secondary" onClick={(e) => this.sortByDesc(e)}>
+          desc
+        </Button>
+        <EmployeeTable randomUsers={this.state.filteredUsers} />
       </div>
     );
   }
