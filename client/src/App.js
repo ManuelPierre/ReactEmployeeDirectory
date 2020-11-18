@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import "./components/filterForm";
 import API from "./utils/api";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
@@ -45,8 +44,8 @@ class App extends React.Component {
     let sortedAscUsers = this.state.filteredUsers;
 
     sortedAscUsers.sort(function (a, b) {
-      var nameA = a.name.first.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.name.first.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.name.first.toUpperCase(); 
+      var nameB = b.name.first.toUpperCase(); 
       if (nameA < nameB) {
         return -1;
       }
@@ -54,7 +53,7 @@ class App extends React.Component {
         return 1;
       }
 
-      // names must be equal
+   
       return 0;
     });
 
@@ -66,8 +65,8 @@ class App extends React.Component {
     let sortedDescUsers = this.state.filteredUsers;
 
     sortedDescUsers.sort(function (a, b) {
-      var nameA = a.name.first.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.name.first.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.name.first.toUpperCase(); 
+      var nameB = b.name.first.toUpperCase(); 
       if (nameA > nameB) {
         return -1;
       }
@@ -75,7 +74,7 @@ class App extends React.Component {
         return 1;
       }
 
-      // names must be equal
+      
       return 0;
     });
 
@@ -85,7 +84,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* // <div>{JSON.stringify(x)}</div> */}
+      
         <InputGroup className="mb-3">
           <FormControl
             placeholder="Recipient's username"
